@@ -18,20 +18,16 @@
   <form action="" method="post">
           <label for="year">Год</label>
           <input type="text" name="year" id="year" class="form-control">
-
-        <input type="button" id="check" class="btn btn-success mt-3" value="Проверить">
-
-         <div class="alert alert-danger mt-2" id="errorBlock"></div>
-
+          <input type="button" id="check" class="btn btn-success mt-3" value="Проверить">
+          <div class="alert alert-danger mt-2" id="errorBlock"></div>
   </form>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
     $('#errorBlock').hide();
-      $('#check').click(function () {
+      $('#check').click(function () {                         //Проверка нажата ли кнопка
           var year = $('#year').val();
-
 
           $.ajax({
             url: 'ajax_check.php',
@@ -39,13 +35,10 @@
             cashe:false,
             data: {'year':year},
             dataType: 'html',
-            success: function (data) {
-            //  if(data == 'Готово'){
+            success: function (data) {                    //Если скрипт успешно выполнен, то показываем соотвествующее сообщение
                 $('#errorBlock').show();
                 $('#errorBlock').text(data);
                $('#year').val("");
-              //}
-
                 }
 
           });
